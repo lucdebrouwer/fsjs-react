@@ -1,6 +1,6 @@
 import React from "react";
 
-function UnhandlerError() {
+function UnhandledError() {
   return (
     <div className="bounds">
       <h1>Error</h1>
@@ -9,4 +9,4 @@ function UnhandlerError() {
   );
 }
 
-export default UnhandlerError;
+export default UnhandledError;
