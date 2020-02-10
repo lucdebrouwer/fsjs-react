@@ -1,11 +1,12 @@
-import React from 'react'
+import React from "react";
 
 function Forbidden() {
-    return (
-        <div>
-
-        </div>
-    )
+  return (
+    <div className="bounds">
+      <h1>Forbidden</h1>
+      <p>Oh oh! You can't access this page.</p>
+    </div>
+  );
 }
 
 export default Forbidden;
