@@ -10,7 +10,7 @@ class CourseDetail extends Component {
               <a className="button" href="update-course.html">
                 Update Course
               </a>
-              <a className="button" href="#">
+              <a className="button" href="/">
                 Delete Course
               </a>
             </span>

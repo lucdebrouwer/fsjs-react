@@ -20,7 +20,7 @@ class Courses extends Component {
             <div className="bounds">
               {context.courses.map(course => (
                 <div className="grid-33" key={course.id}>
-                  <a className="course--module course--link" href="#">
+                  <a className="course--module course--link" href="/">
                     <h4 className="course--label">Course</h4>
                     <h3 className="course--title">{course.title}</h3>
                   </a>
