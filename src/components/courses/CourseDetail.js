@@ -1,6 +1,28 @@
 import React, { Component } from "react";
+import { withRouter } from "react-router-dom";
 
 class CourseDetail extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      id: parseInt(this.props.match.params.id),
+      course: {}
+    };
+  }
+
+  getCourse(url) {
+    fetch(url)
+      .then(res => res.json())
+      .then(data => {
+        this.setState({ course: data });
+      });
+  }
+
+  componentDidMount() {
+    const url = `http://localhost:5000/api/courses/${this.state.id}`;
+    this.getCourse(url);
+  }
+
   render() {
     return (
       <div className="actions--bar">
@@ -14,7 +36,7 @@ class CourseDetail extends Component {
                 Delete Course
               </a>
             </span>
-            <a className="button button-secondary" href="index.html">
+            <a className="button button-secondary" href="/">
               Return to List
             </a>
           </div>
@@ -52,4 +74,4 @@ class CourseDetail extends Component {
   }
 }
 
-export default CourseDetail;
+export default withRouter(CourseDetail);

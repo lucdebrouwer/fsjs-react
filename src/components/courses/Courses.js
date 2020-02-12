@@ -1,15 +1,23 @@
 import React, { Component } from "react";
 import { Consumer } from "../context";
 class Courses extends Component {
-  //   getCourses = url => {
-  //     return fetch(url)
-  //       .then(req => req.json())
-  //       .then(data => data);
-  //   };
+  constructor(props) {
+    super(props);
+    this.state = {
+      courses: []
+    };
+  }
+  getCourses = url => {
+    fetch(url)
+      .then(res => res.json())
+      .then(data => {
+        this.setState({ courses: data });
+      });
+  };
 
   componentDidMount() {
-    // const data = this.getCourses("http://localhost:5000/api/courses");
-    // console.log(data);
+    const url = "http://localhost:5000/api/courses";
+    this.getCourses(url);
   }
 
   render() {
@@ -18,9 +26,12 @@ class Courses extends Component {
         {context => {
           return (
             <div className="bounds">
-              {context.courses.map(course => (
+              {this.state.courses.map(course => (
                 <div className="grid-33" key={course.id}>
-                  <a className="course--module course--link" href="/">
+                  <a
+                    className="course--module course--link"
+                    href={`/courses/${course.id}`}
+                  >
                     <h4 className="course--label">Course</h4>
                     <h3 className="course--title">{course.title}</h3>
                   </a>

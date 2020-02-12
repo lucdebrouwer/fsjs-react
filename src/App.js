@@ -1,31 +1,14 @@
 import React, { Component } from "react";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import Courses from "./components/courses/Courses";
-import Header from "./components/Header";
 import { Provider } from "./components/context";
-
+import Header from "./components/Header";
+import CourseDetail from "./components/courses/CourseDetail";
 class App extends Component {
   constructor(props) {
     super(props);
 
-    this.state = {
-      courses: [
-        {
-          id: 1,
-          title: "My course",
-          description: "Some course description"
-        },
-        {
-          id: 2,
-          title: "My Second Course",
-          description: "Some course description"
-        },
-        {
-          id: 3,
-          title: "My Third course",
-          description: "Some course description"
-        }
-      ]
-    };
+    this.state = {};
   }
 
   render() {
@@ -35,9 +18,14 @@ class App extends Component {
           <div>
             <Header />
             <hr />
-            <Courses />
           </div>
         </div>
+        <Router>
+          <Switch>
+            <Route exact path="/" component={Courses} />
+            <Route path="/courses/:id" component={CourseDetail} />
+          </Switch>
+        </Router>
       </Provider>
     );
   }
